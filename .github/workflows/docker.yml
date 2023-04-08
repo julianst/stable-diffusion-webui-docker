@@ -39,7 +39,7 @@ jobs:
           [ "$VERSION" == "main" ] && VERSION=latest
           echo VERSION=$VERSION
 
-          docker compose --profile ${{ matrix.profile }} build --progress plain
+          REGISTRY_ID=$REGISTRY_ID docker compose --profile ${{ matrix.profile }} build --progress plain
 
       - name: Log in to registry
         # This is where you will update the personal access token to GITHUB_TOKEN
@@ -47,5 +47,5 @@ jobs:
 
       - name: Push image
         run: |
-          docker compose --profile ${{ matrix.profile }} push
+          REGISTRY_ID=$REGISTRY_ID docker compose --profile ${{ matrix.profile }} push
           
