@@ -47,5 +47,5 @@ jobs:
 
       - name: Push image
         run: |
-          REGISTRY_ID=$REGISTRY_ID docker compose --profile ${{ matrix.profile }} push
+          REGISTRY_ID=$REGISTRY_ID docker compose push ${{ matrix.profile }}
           
